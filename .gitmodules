@@ -1,0 +1,3 @@
+[submodule "DRM-ARM-stats"]
+	path = DRM-ARM-stats
+	url = https://github.com/LouisSart/DRM-ARM-stats.git
