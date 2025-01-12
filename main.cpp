@@ -18,10 +18,12 @@ R U F :
     - in Eslice : {1E, 1fE, 1NE, 1fNE}
     - out Eslice : {2fE}
     - 3+
+    451584 cases
 F R F :
     - in Eslice : {3E, 1NE}
     - out Eslice : {1E, 2fNE}
     - 3+
+    37632 cases
 */
 
 unsigned N_EO = ipow(2, NE - 1);
@@ -60,11 +62,11 @@ public:
   }
 };
 
-auto generator(const DRNode &root) {
+auto generator(const std::deque<DRNode> &roots) {
 
   std::set<unsigned> visited;
   std::vector<unsigned> visited_counts;
-  std::deque<DRNode> queue{root};
+  std::deque<DRNode> queue = roots;
   unsigned current_depth = 0;
   std::cout << "Searching at depth: 0" << std::endl;
 
@@ -96,7 +98,7 @@ auto generator(const DRNode &root) {
 
 void display_distribution(const std::vector<unsigned> &visited_counts) {
   std::cout << std::setprecision(3);
-  std::cout << "Distribution :" << std::endl;
+  std::cout << "[length][cases][% of <= length]" << std::endl;
   auto N = visited_counts.back();
   for (unsigned i = 0; i < visited_counts.size(); i++) {
     std::cout << "Depth " << i << ": " << visited_counts[i] << " "
@@ -104,11 +106,21 @@ void display_distribution(const std::vector<unsigned> &visited_counts) {
   }
 }
 
+auto init_roots(std::vector<Algorithm> triggers) {
+  std::deque<DRNode> roots;
+  for (auto trigger : triggers) {
+    auto cc = CubieCube();
+    cc.apply(trigger);
+    auto node = DRNode(cc);
+    roots.push_back(node);
+  }
+  return roots;
+}
+
 int main() {
-  auto trigger = Algorithm({F3, R3});
-  auto cc = CubieCube();
-  cc.apply(trigger);
-  auto distribution = generator(DRNode(cc));
+  auto roots =
+      init_roots({{F3, U2, R3}, {F3, U2, R}, {B3, U2, L3}, {B3, U2, L}});
+  auto distribution = generator(roots);
   display_distribution(distribution);
 
   return 0;
