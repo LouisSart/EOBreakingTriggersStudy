@@ -40,6 +40,15 @@ F R F :
     - out Eslice : {1E, 2fNE}
     - 3+
     37632 cases
+R U' F:
+  auto roots = init_roots({{F3, U, R3},
+                           {F3, U, R},
+                           {B3, U, L},
+                           {B3, U, L3},
+                           {F3, D, L3},
+                           {F3, D, L},
+                           {B3, D, R},
+                           {B3, D, R3}});
 */
 
 unsigned N_EO = ipow(2, NE - 1);
@@ -134,14 +143,14 @@ auto init_roots(std::vector<Algorithm> triggers) {
 }
 
 int main() {
-  auto roots = init_roots({{F3, U2, R3},
-                           {F3, U2, R},
-                           {B3, U2, L},
-                           {B3, U2, L3},
-                           {F3, D2, L3},
-                           {F3, D2, L},
-                           {B3, D2, R},
-                           {B3, D2, R3}});
+  auto roots = init_roots({{F3, U, R3},
+                           {F3, U, R},
+                           {B3, U, L},
+                           {B3, U, L3},
+                           {F3, D, L3},
+                           {F3, D, L},
+                           {B3, D, R},
+                           {B3, D, R3}});
   auto distribution = generator(roots);
   display_distribution(distribution);
 
