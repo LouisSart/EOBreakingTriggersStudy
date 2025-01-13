@@ -26,26 +26,56 @@ Depth 8: 37632 100%
 
 R U F (and variants R' U F, L U B,  L' U B):
 [length][cases][% of <= length]
-Depth 0: 4      0.000886%
-Depth 1: 40     0.00886%
-Depth 2: 270    0.0598%
-Depth 3: 1804   0.399%
-Depth 4: 11274  2.5%
-Depth 5: 58890  13%
-Depth 6: 217490 48.2%
-Depth 7: 421026 93.2%
-Depth 8: 451574 100%
-Depth 9: 451584 100%
+Depth 0: 8      0.00177%
+Depth 1: 80     0.0177%
+Depth 2: 540    0.12%
+Depth 3: 3604   0.798%
+Depth 4: 21712  4.81%
+Depth 5: 102192 22.6%
+Depth 6: 303972 67.3%
+Depth 7: 445732 98.7%
+Depth 8: 451584 100%
 
 R U2 F (and variants R U2 F, R' U2 F, L U2 B, L' U2 B):
 [length][cases][% of <= length]
-Depth 0: 4      0.00142%
-Depth 1: 40     0.0142%
-Depth 2: 272    0.0964%
-Depth 3: 1704   0.604%
-Depth 4: 9440   3.34%
-Depth 5: 45348  16.1%
-Depth 6: 156580 55.5%
-Depth 7: 272032 96.4%
-Depth 8: 282196 100%
+[length][cases][% of <= length]
+Depth 0: 8      0.00283%
+Depth 1: 72     0.0255%
+Depth 2: 440    0.156%
+Depth 3: 2648   0.938%
+Depth 4: 13608  4.82%
+Depth 5: 62368  22.1%
+Depth 6: 187480 66.4%
+Depth 7: 278152 98.6%
+Depth 8: 282208 100%
 Depth 9: 282240 100%
+
+R F B (and variant L F B)
+[length][cases][% of <= length]
+Depth 0: 2       0.00113%
+Depth 1: 18      0.0102%
+Depth 2: 96      0.0544%
+Depth 3: 480     0.272%
+Depth 4: 2080    1.18%
+Depth 5: 9608    5.45%
+Depth 6: 37022   21%
+Depth 7: 105880  60%
+Depth 8: 166112  94.2%
+Depth 9: 176188  99.9%
+Depth 10: 176400 100%
+Depth 11: 176400 100%
+
+R U' F (and variants R' U' F, L U' B and L' U' B)
+[length][cases][% of <= length]
+Depth 0:  4       0.000236%
+Depth 1:  40      0.00236%
+Depth 2:  272     0.0161%
+Depth 3:  1840    0.109%
+Depth 4:  11742   0.693%
+Depth 5:  66548   3.93%
+Depth 6:  308728  18.2%
+Depth 7:  1003060 59.2%
+Depth 8:  1640870 96.9%
+Depth 9:  1693430 100%
+Depth 10: 1693440 100%
+Depth 11: 1693440 100%
