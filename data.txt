@@ -54,18 +54,18 @@ Depth 10: 282240 100%
 
 R F B (and variant L F B)
 [length][cases][% of <= length]
-Depth 0: 2       0.00113%
-Depth 1: 18      0.0102%
-Depth 2: 96      0.0544%
-Depth 3: 480     0.272%
-Depth 4: 2080    1.18%
-Depth 5: 9608    5.45%
-Depth 6: 37022   21%
-Depth 7: 105880  60%
-Depth 8: 166112  94.2%
-Depth 9: 176188  99.9%
-Depth 10: 176400 100%
-Depth 11: 176400 100%
+Depth 0:  2       0.00113%
+Depth 1:  18      0.0102%
+Depth 2:  96      0.0544%
+Depth 3:  480     0.272%
+Depth 4:  2080    1.18%
+Depth 5:  9608    5.45%
+Depth 6:  37022   21%
+Depth 7:  105880  60%
+Depth 8:  166112  94.2%
+Depth 9:  176188  99.9%
+Depth 10: 176400  100%
+Depth 11: 176400  100%
 
 R U' F (and variants R' U' F, L U' B and L' U' B, L D' F, L' D' F, R D' B, R' D' B)
 [length][cases][% of <= length]
@@ -79,4 +79,4 @@ Depth 6:  499624   29.5%
 Depth 7:  1290240  76.2%
 Depth 8:  1682636  99.4%
 Depth 9:  1693440  100%
-Depth 10: 1693440 100%
+Depth 10: 1693440  100%
