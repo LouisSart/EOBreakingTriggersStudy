@@ -14,11 +14,27 @@ R U2 F :
     - in Eslice : {1E, 2NE, 1fNE}
     - out Eslice : {1E, 2fE, 1fNE}
     - 6+
+    auto roots = init_roots({{F3, U2, R3},
+                        {F3, U2, R},
+                        {B3, U2, L},
+                        {B3, U2, L3},
+                        {F3, D2, L3},
+                        {F3, D2, L},
+                        {B3, D2, R},
+                        {B3, D2, R3}});
 R U F :
     - in Eslice : {1E, 1fE, 1NE, 1fNE}
     - out Eslice : {2fE}
     - 3+
     451584 cases
+    auto roots = init_roots({{F3, U3, R3},
+                        {F3, U3, R},
+                        {B3, U3, L},
+                        {B3, U3, L3},
+                        {F3, D3, L3},
+                        {F3, D3, L},
+                        {B3, D3, R},
+                        {B3, D3, R3}});
 F R F :
     - in Eslice : {3E, 1NE}
     - out Eslice : {1E, 2fNE}
@@ -118,8 +134,14 @@ auto init_roots(std::vector<Algorithm> triggers) {
 }
 
 int main() {
-  auto roots =
-      init_roots({{F3, U2, R3}, {F3, U2, R}, {B3, U2, L3}, {B3, U2, L}});
+  auto roots = init_roots({{F3, U2, R3},
+                           {F3, U2, R},
+                           {B3, U2, L},
+                           {B3, U2, L3},
+                           {F3, D2, L3},
+                           {F3, D2, L},
+                           {B3, D2, R},
+                           {B3, D2, R3}});
   auto distribution = generator(roots);
   display_distribution(distribution);
 
