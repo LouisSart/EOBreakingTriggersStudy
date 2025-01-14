@@ -80,3 +80,52 @@ Depth 7:  1290240  76.2%
 Depth 8:  1682636  99.4%
 Depth 9:  1693440  100%
 Depth 10: 1693440  100%
+
+R (and variant L) standard 4e4c
+[length][cases][% chance of <= length]
+Depth 0: 2 0.00283%
+Depth 1: 18 0.0255%
+Depth 2: 102 0.145%
+Depth 3: 562 0.796%
+Depth 4: 2744 3.89%
+Depth 5: 11256 16%
+Depth 6: 33524 47.5%
+Depth 7: 62796 89%
+Depth 8: 70356 99.7%
+Depth 9: 70560 100%
+Depth 10: 70560 100%
+
+
+R U2 R (and variants R' U2 R, R D2 R, R' D2 R, L U2 L, L' U2 L, L D2 L, L' D2 L)
+[length][cases][% chance of <= length]
+Depth 0: 8 0.0595%
+Depth 1: 72 0.536%
+Depth 2: 376 2.8%
+Depth 3: 1664 12.4%
+Depth 4: 5304 39.5%
+Depth 5: 10648 79.2%
+Depth 6: 13368 99.5%
+Depth 7: 13440 100%
+Depth 8: 13440 100%
+
+R U' R (and variants R' U' R, R D' R, R' D' R, L U' L, L' U' L, L D' L, L' D' L)
+[length][cases][% chance of <= length]
+Depth 0: 8 0.446%
+Depth 1: 68 3.79%
+Depth 2: 336 18.8%
+Depth 3: 1080 60.3%
+Depth 4: 1748 97.5%
+Depth 5: 1792 100%
+Depth 6: 1792 100%
+
+R U L (and variants R' U L, L D R, L' D R, L U R, L' U R, R D L, R' D L)
+[length][cases][% chance of <= length]
+Depth 0: 8 0.068%
+Depth 1: 60 0.51%
+Depth 2: 332 2.82%
+Depth 3: 1420 12.1%
+Depth 4: 4404 37.4%
+Depth 5: 9236 78.5%
+Depth 6: 11584 98.5%
+Depth 7: 11760 100%
+Depth 8: 11760 100%

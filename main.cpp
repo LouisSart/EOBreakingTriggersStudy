@@ -123,7 +123,7 @@ auto generator(const std::deque<DRNode> &roots) {
 
 void display_distribution(const std::vector<unsigned> &visited_counts) {
   std::cout << std::setprecision(3);
-  std::cout << "[length][cases][% of <= length]" << std::endl;
+  std::cout << "[length][cases][% chance of <= length]" << std::endl;
   auto N = visited_counts.back();
   for (unsigned i = 0; i < visited_counts.size(); i++) {
     std::cout << "Depth " << i << ": " << visited_counts[i] << " "
