@@ -144,14 +144,7 @@ auto init_roots(std::vector<Algorithm> triggers) {
 }
 
 int main() {
-  auto roots = init_roots({{F3, U, R3},
-                           {F3, U, R},
-                           {B3, U, L},
-                           {B3, U, L3},
-                           {F3, D, L3},
-                           {F3, D, L},
-                           {B3, D, R},
-                           {B3, D, R3}});
+  auto roots = init_roots({{R}, {L}});
   auto distribution = generator(roots);
   display_distribution(distribution);
 
