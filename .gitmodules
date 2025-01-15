@@ -1,0 +1,3 @@
+[submodule "EpiCube"]
+	path = EpiCube
+	url = https://github.com/LouisSart/EpiCube.git
