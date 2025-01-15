@@ -1,4 +1,5 @@
-#include "DRM-ARM-stats/cubie_cube.hpp"
+#include "EpiCube/src/coordinate.hpp"
+#include "EpiCube/src/cubie_cube.hpp"
 #include <cassert>
 #include <deque>
 #include <iomanip>
@@ -60,15 +61,15 @@ bool is_E_edge(const Cubie &e) {
 }
 
 unsigned dr_coord(CubieCube &cc) {
-  static unsigned layout[NE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  static std::array<unsigned, NE> layout = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
   for (unsigned i = 0; i < NE; i++) {
     layout[i] = (int)is_E_edge(cc.ep[i]);
   }
 
-  auto elc = layout_coord(layout, NE);
-  auto eoc = eo_coord(cc.eo, NE - 1);
-  auto coc = co_coord(cc.co, NC - 1);
+  auto elc = layout_index(layout, 4);
+  auto eoc = eo_index<NE, true>(cc.eo);
+  auto coc = co_index<NC, true>(cc.co);
   return (elc * N_EO + eoc) * N_CO + coc;
 }
 
@@ -82,7 +83,7 @@ public:
 
   DRNode make_child(Move m) {
     CubieCube new_state = state;
-    new_state.apply(elementary_transformations[m]);
+    new_state.apply(m);
     return DRNode(new_state, depth + 1);
   }
 };
