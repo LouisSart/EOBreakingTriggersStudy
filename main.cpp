@@ -2,8 +2,10 @@
 #include "EpiCube/src/cubie_cube.hpp"
 #include <cassert>
 #include <deque>
+#include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <memory>
 
 /*
 R F :
@@ -73,45 +75,71 @@ unsigned dr_coord(CubieCube &cc) {
   return (elc * N_EO + eoc) * N_CO + coc;
 }
 
-class DRNode {
-public:
+struct DRNode : std::enable_shared_from_this<DRNode> {
+  using sptr = std::shared_ptr<DRNode>;
   CubieCube state;
   unsigned depth;
+  Move move;
+  sptr parent;
 
-  DRNode(CubieCube state = CubieCube(), unsigned depth = 0)
-      : state(state), depth(depth) {}
+  DRNode(CubieCube state = CubieCube(), unsigned depth = 0, Move m = U,
+         sptr p = nullptr)
+      : state(state), depth(depth), move{m}, parent{p} {}
 
-  DRNode make_child(Move m) {
+  sptr make_child(Move m) {
     CubieCube new_state = state;
     new_state.apply(m);
-    return DRNode(new_state, depth + 1);
+    auto truc = shared_from_this();
+    return sptr(new DRNode(new_state, depth + 1, m, this->shared_from_this()));
+  }
+
+  Algorithm path() {
+    Algorithm alg;
+    auto node = this->shared_from_this();
+    while (node->parent) {
+      auto move = node->move;
+      alg.append(move);
+      node = node->parent;
+    }
+    return alg.reversed();
   }
 };
 
-auto generator(const std::deque<DRNode> &roots) {
+void dump(const auto &queue) {
+  for (auto node : queue) {
+    auto alg = node->path();
+    alg.show();
+  }
+}
+
+auto generator(const std::deque<DRNode::sptr> &roots, unsigned dump_depth) {
 
   std::set<unsigned> visited;
   std::vector<unsigned> visited_counts;
-  std::deque<DRNode> queue = roots;
+  std::deque<DRNode::sptr> queue = roots;
   unsigned current_depth = 0;
   std::cout << "Searching at depth: 0" << std::endl;
+  std::ofstream file("algs.txt");
 
   while (queue.size() > 0) {
     auto node = queue.back();
-    unsigned coord = dr_coord(node.state);
+    unsigned coord = dr_coord(node->state);
 
-    if (node.depth > current_depth) {
+    if (node->depth > current_depth) {
       std::cout << "Visited: " << visited.size() << std::endl;
       visited_counts.push_back(visited.size());
-      current_depth = node.depth;
-      std::cout << "Searching at depth: " << node.depth << std::endl;
+      current_depth = node->depth;
+      std::cout << "Searching at depth: " << node->depth << std::endl;
     }
 
     if (!visited.contains(coord)) {
       visited.insert(coord);
       for (Move m : {U, U3, U2, D, D2, D3, R2, L2, F2, B2}) {
-        auto child = node.make_child(m);
+        auto child = node->make_child(m);
         queue.push_front(child);
+      }
+      if (node->depth <= dump_depth) {
+        file << node->path() << std::endl;
       }
     }
     queue.pop_back();
@@ -133,11 +161,12 @@ void display_distribution(const std::vector<unsigned> &visited_counts) {
 }
 
 auto init_roots(std::vector<Algorithm> triggers) {
-  std::deque<DRNode> roots;
+  using sptr = DRNode::sptr;
+  std::deque<sptr> roots;
   for (auto trigger : triggers) {
     auto cc = CubieCube();
     cc.apply(trigger);
-    auto node = DRNode(cc);
+    auto node = std::make_shared<DRNode>(cc);
     roots.push_back(node);
   }
   return roots;
@@ -145,7 +174,7 @@ auto init_roots(std::vector<Algorithm> triggers) {
 
 int main() {
   auto roots = init_roots({{R}, {L}});
-  auto distribution = generator(roots);
+  auto distribution = generator(roots, 3);
   display_distribution(distribution);
 
   return 0;
